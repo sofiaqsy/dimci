@@ -16,6 +16,14 @@
     <string name="title_activity_news">NewsActivity</string>
     <string name="action_settings">Settings</string>
 
+    <string name="tipo">Tipo</string>
+    <string name="lugar">Lugar</string>
+    <string name="descripcion">Descripción</string>
+    <string name="foto">Foto</string>
+
+    <string name="estado">Estado</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

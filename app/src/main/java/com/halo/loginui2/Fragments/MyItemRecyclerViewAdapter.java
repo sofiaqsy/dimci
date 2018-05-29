@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.halo.loginui2.Fragments.ListIncidents.OnListFragmentInteractionListener;
 import com.halo.loginui2.Fragments.dummy.DummyContent.DummyItem;
+import com.halo.loginui2.R;
 
 import java.util.List;
 
