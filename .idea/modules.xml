@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/splash screen and login screen animation.iml" filepath="$PROJECT_DIR$/splash screen and login screen animation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dinci.iml" filepath="$PROJECT_DIR$/dinci.iml" />
     </modules>
   </component>
 </project>
