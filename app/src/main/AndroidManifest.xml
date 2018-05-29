@@ -9,17 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity_Login">
+        <activity android:name=".vistas.Activity_Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".Activity_Register" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" />
+=======
+        <activity android:name=".vistas.Activity_Register" />
+        <activity android:name=".vistas.NewIncident" />
+        <activity android:name=".vistas.DetailsIncident"></activity>
+>>>>>>> f75cc0ace7a0fc7700f75a4376bcf31027f97958
     </application>
 
 </manifest>

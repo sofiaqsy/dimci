@@ -1,4 +1,4 @@
-package com.halo.loginui2;
+package com.halo.loginui2.vistas;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import com.halo.loginui2.R;
 
 public class Activity_Register extends AppCompatActivity {
 
