@@ -16,16 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
         <activity android:name=".Activity_Register" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" />
-=======
         <activity android:name=".vistas.Activity_Register" />
         <activity android:name=".vistas.NewIncident" />
         <activity android:name=".vistas.DetailsIncident"></activity>
->>>>>>> f75cc0ace7a0fc7700f75a4376bcf31027f97958
     </application>
 
 </manifest>
