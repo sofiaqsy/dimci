@@ -1,13 +1,15 @@
-package com.halo.loginui2;
+package com.halo.loginui2.vistas;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Activity_Register extends AppCompatActivity {
+import com.halo.loginui2.R;
+
+public class DetailsIncident extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_details_incident);
     }
 }

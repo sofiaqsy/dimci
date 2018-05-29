@@ -9,14 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity_Login">
+        <activity android:name=".vistas.Activity_Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity_Register"></activity>
+        <activity android:name=".vistas.Activity_Register" />
+        <activity android:name=".vistas.NewIncident" />
+        <activity android:name=".vistas.DetailsIncident"></activity>
     </application>
 
 </manifest>
