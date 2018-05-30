@@ -1,5 +1,8 @@
 package com.halo.loginui2.Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Noticias {
 
     private Integer id;
@@ -52,6 +55,19 @@ public class Noticias {
 
     public Noticias(){}
 
+    private List<Noticias> noticiasList;
+
+    // This method creates an ArrayList that has three Person objects
+// Checkout the project associated with this tutorial on Github if
+// you want to use the same images.
+    private void initializeData(){
+        noticiasList = new ArrayList<>();
+        noticiasList.add(new Noticias(1,"El Comercio", "Noticia numero 1", "01/01/2018"));
+        noticiasList.add(new Noticias(2,"Correo", "Noticia numero 2", "01/02/2018"));
+        noticiasList.add(new Noticias(3,"Peru 21", "Noticia numero 3", "01/03/2018"));
+        noticiasList.add(new Noticias(4,"Peru 21", "Noticia numero 3", "01/03/2018"));
+        noticiasList.add(new Noticias(5,"Peru 21", "Noticia numero 3", "01/03/2018"));
+    }
 
 
 

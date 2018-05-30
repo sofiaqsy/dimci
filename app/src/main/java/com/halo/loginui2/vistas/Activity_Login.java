@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Button;
 
+import com.halo.loginui2.MainActivity;
 import com.halo.loginui2.R;
 import android.app.ProgressDialog;
 import android.content.Intent;

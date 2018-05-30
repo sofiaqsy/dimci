@@ -5,16 +5,21 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.TextView;
 
 //import com.androidnetworking.AndroidNetworking;
 //import com.androidnetworking.common.Priority;
 //import com.androidnetworking.error.ANError;
 //import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.halo.loginui2.Model.Noticias;
 import com.halo.loginui2.R;
 
 import org.json.JSONException;
@@ -37,9 +42,8 @@ public class SourcesFragment extends Fragment {
     RecyclerView sourcesRecyclerView;
     //SourcesAdapter sourcesAdapter;
     RecyclerView.LayoutManager sourcesLayoutManager;
-    //List<Source> sources;
+    List<Noticias> noticias;
     String tag;
-
 
     public SourcesFragment() {
         // Required empty public constructor
@@ -50,18 +54,18 @@ public class SourcesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sources, container, false);
-        //View view = inflater.inflate(R.layout.fragment_sources, container, false);
-        //sources = new ArrayList<>();
-        //tag = getString(R.string.app_name);
-        //sourcesRecyclerView = view.findViewById(R.id.sourcesRecyclerView);
+        //return inflater.inflate(R.layout.fragment_sources, container, false);
+        View view = inflater.inflate(R.layout.fragment_sources, container, false);
+        noticias = new ArrayList<>();
+        tag = getString(R.string.app_name);
+        sourcesRecyclerView = view.findViewById(R.id.sourcesRecyclerView);
         //sourcesAdapter = new SourcesAdapter(sources);
         //sourcesLayoutManager = new GridLayoutManager(view.getContext(),
         //        getSpanCountFor(getResources().getConfiguration()));
         //sourcesRecyclerView.setLayoutManager(sourcesLayoutManager);
         //sourcesRecyclerView.setAdapter(sourcesAdapter);
         //updateSources();
-        //return view;
+        return view;
     }
 
     @Override
