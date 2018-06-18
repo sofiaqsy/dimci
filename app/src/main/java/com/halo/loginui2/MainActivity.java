@@ -1,6 +1,5 @@
 package com.halo.loginui2;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -11,7 +10,7 @@ import android.widget.TextView;
 
 import com.halo.loginui2.Fragments.HomeFragment;
 import com.halo.loginui2.Fragments.SettingsFragment;
-import com.halo.loginui2.Fragments.SourcesFragment;
+import com.halo.loginui2.Fragments.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,11 +44,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        navigateAccordingTo(R.id.navigation_home);
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        navigateAccordingTo(R.id.navigation_notifications);
+
+
+
 
     }
 
@@ -60,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
                 return new HomeFragment();
             case R.id.navigation_dashboard:
                 return new SettingsFragment();
-            case R.id.navigation_notifications:
-                return new SourcesFragment();
+            case R.id.navigation_perfil:
+                return new ProfileFragment();
         }
         return null;
     }
