@@ -1,19 +1,11 @@
 package com.halo.loginui2.service;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
-import com.halo.loginui2.Adapter.IncidentAdapter;
-import com.halo.loginui2.Decoration.SimpleDividerItemDecoration;
-import com.halo.loginui2.Model.Incident;
-import com.halo.loginui2.R;
-
-import org.json.JSONArray;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -21,26 +13,26 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
-import com.halo.loginui2.vistas.DetailsIncident;
-
+import com.halo.loginui2.Adapter.NoticiasAdapter;
+import com.halo.loginui2.Decoration.SimpleDividerItemDecoration;
+import com.halo.loginui2.Model.Noticias;
+import com.halo.loginui2.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 import java.util.ArrayList;
-import java.util.List;
 
 import static android.content.ContentValues.TAG;
 
-public class IncidentService {
+public class NoticiasService  extends AppController{
 
-    private Incident incident = null;
+    private Noticias noticias = null;
 
-    private IncidentAdapter incidentAdapter;
+    private NoticiasAdapter noticiasAdapter;
 
-    private ArrayList<Incident> items;
+    private ArrayList<Noticias> items;
 
     JsonArrayRequest jsonArrayRequest ;
 
@@ -56,16 +48,16 @@ public class IncidentService {
 
     JSONArray jsonArray = new JSONArray();
 
-    public IncidentService(Context context){
+    public NoticiasService(Context context){
 
         this.context = context;
 
 
     }
 
-    public void getListIncidents(final View view){
+    public void getListNoticias(final View view){
 
-        url = "https://dinci-rest.herokuapp.com/incidente";
+        url = "https://dinci-rest.herokuapp.com/noticia";
         jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
                 url,
@@ -74,21 +66,21 @@ public class IncidentService {
 
                     @Override
                     public void onResponse(JSONArray response) {
-                        Log.d(TAG, response.toString());
 
                         items = parseJson(response);
 
-                        Toast.makeText(context,"pasoOOO coshowRecyclerViewn " + items.size() + " items",Toast.LENGTH_LONG).show();
                         if(items.size() != 0){
                             showRecyclerView(view, items);
                         }
-
                     }
                 },
 
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+
+                        Toast.makeText(context,"ERROR pasoOOO coshowRecyclerViewn  ",Toast.LENGTH_LONG).show();
+
                     }
                 }
 
@@ -98,47 +90,35 @@ public class IncidentService {
 
     }
 
-    public ArrayList<Incident> parseJson(JSONArray jsonArray){
-        ArrayList<Incident> incidents = new ArrayList();
+    public ArrayList<Noticias> parseJson(JSONArray jsonArray){
+        ArrayList<Noticias> noticias = new ArrayList();
         JSONObject jsonObject = null;
         for (int i = 0; i < jsonArray.length(); i++){
             try {
                 jsonObject = jsonArray.getJSONObject(i);
-                String type = jsonObject.getString("type");
+                String title = jsonObject.getString("title");
+                String description = jsonObject.getString("description");
                 String datePublication = jsonObject.getString("datePublication");
-                String comment = jsonObject.getString("comment");
-                String state = jsonObject.getString("state");
 
-            if(type=="1"){
-                type="Basura tirada";
-            }else {
-                type="Parque";
-            }
-            if(state=="1"){
-                state="Aceptado";
-            }else{
-                state = "Evaluando";
-            }
-                incidents.add(new Incident( type, datePublication,"LIMA",comment,state));
+
+                noticias.add(new Noticias( 1, title,"as",datePublication));
             } catch (JSONException e) {
                 Log.e("JsonObjet", "Se ha producido al crear la lista de incidentes. "+ e.getMessage());
             }
         }
-        return incidents;
+        return noticias;
     }
 
 
-    public void showRecyclerView(View view, ArrayList<Incident> incidents){
+    public void showRecyclerView(View view, ArrayList<Noticias> noticias){
 
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewNoticias);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        incidentAdapter = new IncidentAdapter(incidents);
-
-
-        recyclerView.setAdapter(incidentAdapter);
+        noticiasAdapter = new NoticiasAdapter(noticias, view.getContext());
+        recyclerView.setAdapter(noticiasAdapter);
 
         recyclerView.addItemDecoration(new SimpleDividerItemDecoration(view.getContext()));
 
