@@ -28,10 +28,10 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SettingsFragment extends Fragment {
+public class ListaIncidentesFragment extends Fragment {
 
     private IncidentAdapter incidentAdapter;
-    public SettingsFragment() {
+    public ListaIncidentesFragment() {
         // Required empty public constructor
     }
 
@@ -41,7 +41,7 @@ public class SettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
 
 
-        final View view = inflater.inflate(R.layout.fragment_settings, container, false);
+        final View view = inflater.inflate(R.layout.fragment_lista_incidentes, container, false);
 
         IncidentService incidentAdapter = new IncidentService(view.getContext());
         incidentAdapter.getListIncidents(view);
