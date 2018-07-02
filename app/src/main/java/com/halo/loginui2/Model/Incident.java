@@ -9,8 +9,21 @@ public class Incident {
     private String place;
     private String comment;
     private String state;
-    private int idCitizen;
-    private int idEmploye;
+    private Ciudadano citizen;
+    private Empleado employe;
+
+    public Incident() {
+    }
+
+    public Incident(String type, String datePublication, String place, String comment, String state, Ciudadano citizen, Empleado employe) {
+        this.type = type;
+        this.datePublication = datePublication;
+        this.place = place;
+        this.comment = comment;
+        this.state = state;
+        this.citizen = citizen;
+        this.employe = employe;
+    }
 
     public Incident(String type, String datePublication, String place, String comment, String state) {
         this.type = type;
@@ -18,6 +31,17 @@ public class Incident {
         this.place = place;
         this.comment = comment;
         this.state = state;
+    }
+
+    public Incident(int id, String type, String datePublication, String place, String comment, String state, Ciudadano citizen, Empleado employe) {
+        this.id = id;
+        this.type = type;
+        this.datePublication = datePublication;
+        this.place = place;
+        this.comment = comment;
+        this.state = state;
+        this.citizen = citizen;
+        this.employe = employe;
     }
 
     public int getId() {
@@ -68,19 +92,19 @@ public class Incident {
         this.state = state;
     }
 
-    public int getIdCitizen() {
-        return idCitizen;
+    public Ciudadano getCitizen() {
+        return citizen;
     }
 
-    public void setIdCitizen(int idCitizen) {
-        this.idCitizen = idCitizen;
+    public void setCitizen(Ciudadano citizen) {
+        this.citizen = citizen;
     }
 
-    public int getIdEmploye() {
-        return idEmploye;
+    public Empleado getEmploye() {
+        return employe;
     }
 
-    public void setIdEmploye(int idEmploye) {
-        this.idEmploye = idEmploye;
+    public void setEmploye(Empleado employe) {
+        this.employe = employe;
     }
 }

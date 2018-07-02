@@ -12,9 +12,10 @@ import java.util.ArrayList;
 import android.app.Activity;
 
 
-public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.ViewHolder> {
+public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.ViewHolder>{
     private Activity listContext;
     private ArrayList<Incident> mDataset;
+
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -51,8 +52,6 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.ViewHo
         // create a new view
         CardView v = (CardView) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_incident, parent, false);
-
-
         return new ViewHolder(v);
     }
 
@@ -77,4 +76,5 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.ViewHo
     public int getItemCount() {
         return mDataset.size();
     }
+
 }

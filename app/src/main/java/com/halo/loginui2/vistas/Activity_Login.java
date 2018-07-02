@@ -109,7 +109,7 @@ public class Activity_Login extends AppCompatActivity {
                         // onLoginFailed();
                         progressDialog.dismiss();
                     }
-                }, 3000);
+                }, 500);
     }
 
     @Override
@@ -149,18 +149,25 @@ public class Activity_Login extends AppCompatActivity {
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
-        if (email.isEmpty() || password.length() == 8){//!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _emailText.setError("Introdusca un usuario valido");
-            valid = false;
-        } else {
-            _emailText.setError(null);
-        }
+//        if (email.isEmpty() || password.length() == 8){//!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+//            _emailText.setError("Introdusca un usuario valido");
+//            valid = false;
+//        } else {
+//            _emailText.setError(null);
+//        }
+//
+//        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
+//            _passwordText.setError("entre 4 y 10 caracteres alfanuméricos");
+//            valid = false;
+//        } else {
+//            _passwordText.setError(null);
+//        }
+        if (password.isEmpty() && email.isEmpty()) {
 
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            _passwordText.setError("entre 4 y 10 caracteres alfanuméricos");
-            valid = false;
-        } else {
             _passwordText.setError(null);
+        } else {
+            _passwordText.setError("poner correo y password en blanco");
+            valid = false;
         }
 
         return valid;

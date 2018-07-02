@@ -1,6 +1,7 @@
 package com.halo.loginui2.service;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -20,7 +21,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
-
+import com.halo.loginui2.vistas.DetailsIncident;
 
 
 import org.json.JSONArray;
@@ -127,6 +128,8 @@ public class IncidentService {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         incidentAdapter = new IncidentAdapter(incidents);
+
+
         recyclerView.setAdapter(incidentAdapter);
 
         recyclerView.addItemDecoration(new SimpleDividerItemDecoration(view.getContext()));

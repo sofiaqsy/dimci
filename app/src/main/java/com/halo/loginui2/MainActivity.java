@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.halo.loginui2.Fragments.HomeFragment;
-import com.halo.loginui2.Fragments.SettingsFragment;
+import com.halo.loginui2.Fragments.ListaIncidentesFragment;
 import com.halo.loginui2.Fragments.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.navigation_home:
                 return new HomeFragment();
             case R.id.navigation_dashboard:
-                return new SettingsFragment();
+                return new ListaIncidentesFragment();
             case R.id.navigation_perfil:
                 return new ProfileFragment();
         }
