@@ -25,7 +25,8 @@
             android:label="@string/title_activity_main" />
         <activity android:name=".vistas.NewIncident" />
         <activity android:name=".vistas.DetailsIncident" />
-        <activity android:name=".vistas.RecuperarClave"></activity>
+        <activity android:name=".vistas.RecuperarClave" />
+        <activity android:name=".vistas.DetailsNoticias"></activity>
     </application>
 
 </manifest>
