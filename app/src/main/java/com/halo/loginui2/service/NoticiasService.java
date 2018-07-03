@@ -13,6 +13,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.google.gson.Gson;
 import com.halo.loginui2.Adapter.NoticiasAdapter;
 import com.halo.loginui2.Decoration.SimpleDividerItemDecoration;
 import com.halo.loginui2.Model.Noticias;
@@ -93,15 +94,13 @@ public class NoticiasService  extends AppController{
     public ArrayList<Noticias> parseJson(JSONArray jsonArray){
         ArrayList<Noticias> noticias = new ArrayList();
         JSONObject jsonObject = null;
+        Noticias noticia;
+        Gson gson = new Gson();
         for (int i = 0; i < jsonArray.length(); i++){
             try {
                 jsonObject = jsonArray.getJSONObject(i);
-                String title = jsonObject.getString("title");
-                String description = jsonObject.getString("description");
-                String datePublication = jsonObject.getString("datePublication");
-
-
-                noticias.add(new Noticias( 1, title,"as",datePublication));
+                noticia = gson.fromJson(jsonObject.toString(),Noticias.class);
+                noticias.add(noticia);
             } catch (JSONException e) {
                 Log.e("JsonObjet", "Se ha producido al crear la lista de incidentes. "+ e.getMessage());
             }

@@ -8,9 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.halo.loginui2.Adapter.IncidentAdapter;
 import com.halo.loginui2.Decoration.SimpleDividerItemDecoration;
+import com.halo.loginui2.Model.EstadoIncidente;
 import com.halo.loginui2.Model.Incident;
+import com.halo.loginui2.Model.TipoIncidente;
 import com.halo.loginui2.R;
 
 import org.json.JSONArray;
@@ -35,6 +38,7 @@ import java.util.List;
 import static android.content.ContentValues.TAG;
 
 public class IncidentService {
+    final static String TAG = "IncidentService";
 
     private Incident incident = null;
 
@@ -78,7 +82,7 @@ public class IncidentService {
 
                         items = parseJson(response);
 
-                        Toast.makeText(context,"pasoOOO coshowRecyclerViewn " + items.size() + " items",Toast.LENGTH_LONG).show();
+                        //Toast.makeText(context,"pasoOOO coshowRecyclerViewn " + items.size() + " items",Toast.LENGTH_LONG).show();
                         if(items.size() != 0){
                             showRecyclerView(view, items);
                         }
@@ -101,25 +105,14 @@ public class IncidentService {
     public ArrayList<Incident> parseJson(JSONArray jsonArray){
         ArrayList<Incident> incidents = new ArrayList();
         JSONObject jsonObject = null;
+        Gson gson = new Gson();
+        Incident incident;
         for (int i = 0; i < jsonArray.length(); i++){
             try {
                 jsonObject = jsonArray.getJSONObject(i);
-                String type = jsonObject.getString("type");
-                String datePublication = jsonObject.getString("datePublication");
-                String comment = jsonObject.getString("comment");
-                String state = jsonObject.getString("state");
-
-            if(type=="1"){
-                type="Basura tirada";
-            }else {
-                type="Parque";
-            }
-            if(state=="1"){
-                state="Aceptado";
-            }else{
-                state = "Evaluando";
-            }
-                incidents.add(new Incident( type, datePublication,"LIMA",comment,state));
+                //Log.i(TAG,jsonObject.toString());
+                incident = gson.fromJson(jsonObject.toString(),Incident.class);
+                incidents.add(incident);
             } catch (JSONException e) {
                 Log.e("JsonObjet", "Se ha producido al crear la lista de incidentes. "+ e.getMessage());
             }
@@ -135,7 +128,7 @@ public class IncidentService {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        incidentAdapter = new IncidentAdapter(incidents);
+        incidentAdapter = new IncidentAdapter(incidents,view.getContext());
 
 
         recyclerView.setAdapter(incidentAdapter);

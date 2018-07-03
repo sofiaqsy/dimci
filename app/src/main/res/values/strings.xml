@@ -19,12 +19,12 @@
     <string name="title_perfil">Perfil</string>
 
 
-    <string name="tipo">Tipo</string>
-    <string name="lugar">Lugar</string>
-    <string name="descripcion">Descripción</string>
+    <string name="tipo">Tipo:</string>
+    <string name="lugar">Lugar:</string>
+    <string name="descripcion">Descripción:</string>
     <string name="foto">Foto</string>
 
-    <string name="estado">Estado</string>
+    <string name="estado">Estado:</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

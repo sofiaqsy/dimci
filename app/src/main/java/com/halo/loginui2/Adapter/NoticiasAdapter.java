@@ -3,12 +3,15 @@ package com.halo.loginui2.Adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +20,7 @@ import com.halo.loginui2.Model.Noticias;
 import com.halo.loginui2.Model.Noticias;
 import com.halo.loginui2.R;
 import com.halo.loginui2.vistas.DetailsNoticias;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,14 +39,14 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
         // each data item is just a string in this case
         public TextView title;
         public TextView datePublication;
-        public TextView description;
         public TextView mas;
+        public ImageView foto;
         LinearLayout linearLayoutNoticias;
 
 
         public ViewHolder(CardView v) {
             super(v);
-
+            foto = v.findViewById(R.id.imagen);
             title = (TextView) v.findViewById(R.id.title_noticias);
             datePublication = (TextView) v.findViewById(R.id.datePublication);
             mas = (TextView) v.findViewById(R.id.mas);
@@ -83,6 +87,8 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
 
         holder.datePublication.setText(mDataset.get(position).getDatePublication());
 
+        Picasso.get().load(mDataset.get(position).getImagen()).into(holder.foto);
+
 
         holder.linearLayoutNoticias.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +98,7 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
                 intent.putExtra("title", mDataset.get(position).getTitle());
                 intent.putExtra("description", mDataset.get(position).getDescription());
                 intent.putExtra("datePublication", mDataset.get(position).getDatePublication());
+                intent.putExtra("imagen", mDataset.get(position).getImagen());
 
                 mContext.startActivity(intent);
             }

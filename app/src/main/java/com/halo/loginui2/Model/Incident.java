@@ -1,21 +1,25 @@
 package com.halo.loginui2.Model;
 
+import java.io.File;
+import java.io.Serializable;
+
 public class Incident {
 
 
     private int id;
-    private String type;
+    private TipoIncidente type;
     private String datePublication;
     private String place;
     private String comment;
-    private String state;
+    private EstadoIncidente state;
     private Ciudadano citizen;
     private Empleado employe;
+    private String imagen;
 
     public Incident() {
     }
 
-    public Incident(String type, String datePublication, String place, String comment, String state, Ciudadano citizen, Empleado employe) {
+    public Incident(TipoIncidente type, String datePublication, String place, String comment, EstadoIncidente state, Ciudadano citizen, Empleado employe,String imagen) {
         this.type = type;
         this.datePublication = datePublication;
         this.place = place;
@@ -23,9 +27,10 @@ public class Incident {
         this.state = state;
         this.citizen = citizen;
         this.employe = employe;
+        this.imagen = imagen;
     }
 
-    public Incident(String type, String datePublication, String place, String comment, String state) {
+    public Incident(TipoIncidente type, String datePublication, String place, String comment, EstadoIncidente state) {
         this.type = type;
         this.datePublication = datePublication;
         this.place = place;
@@ -33,7 +38,7 @@ public class Incident {
         this.state = state;
     }
 
-    public Incident(int id, String type, String datePublication, String place, String comment, String state, Ciudadano citizen, Empleado employe) {
+    public Incident(int id, TipoIncidente type, String datePublication, String place, String comment, EstadoIncidente state, Ciudadano citizen, Empleado employe,String imagen) {
         this.id = id;
         this.type = type;
         this.datePublication = datePublication;
@@ -42,6 +47,7 @@ public class Incident {
         this.state = state;
         this.citizen = citizen;
         this.employe = employe;
+        this.imagen = imagen;
     }
 
     public int getId() {
@@ -52,11 +58,11 @@ public class Incident {
         this.id = id;
     }
 
-    public String getType() {
+    public TipoIncidente getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(TipoIncidente type) {
         this.type = type;
     }
 
@@ -84,11 +90,11 @@ public class Incident {
         this.comment = comment;
     }
 
-    public String getState() {
+    public EstadoIncidente getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(EstadoIncidente state) {
         this.state = state;
     }
 
@@ -106,5 +112,13 @@ public class Incident {
 
     public void setEmploye(Empleado employe) {
         this.employe = employe;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }

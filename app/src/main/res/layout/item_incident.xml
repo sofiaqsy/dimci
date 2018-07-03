@@ -6,6 +6,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/itemIncidente"
         android:layout_width="match_parent"
         android:layout_height="84dp"
         android:background="?android:attr/selectableItemBackground"
@@ -27,10 +28,9 @@
             android:textSize="18dp" />
 
         <TextView
-            android:id="@+id/comment"
-            android:layout_width="265dp"
+            android:id="@+id/place"
+            android:layout_width="204dp"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/type"
             android:layout_alignStart="@+id/type"
             android:layout_below="@+id/type"
             android:text="El dia miercoles encontre en el parque kennedy basura tirada." />
@@ -39,11 +39,8 @@
             android:id="@+id/state"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="25dp"
-            android:layout_marginRight="25dp"
+            android:layout_alignEnd="@+id/datePublication"
+            android:layout_alignTop="@+id/type"
             android:text="PROCESO"
             android:textColor="@color/gradStart" />
 
@@ -51,8 +48,9 @@
             android:id="@+id/datePublication"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/type"
-            android:layout_alignEnd="@+id/comment"
+            android:layout_alignBottom="@+id/place"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="11dp"
             android:text="TextView"
             android:textSize="10dp"
             tools:text="Jueves 30 de abril" />

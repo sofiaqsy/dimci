@@ -9,13 +9,18 @@ private int id;
 private String title;
 private String description;
 private String datePublication;
+private String imagen;
 
 
-    public Noticias(int id, String title, String description, String datePublication) {
+    public Noticias(int id, String title, String description, String datePublication,String imagen) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.datePublication = datePublication;
+        this.imagen = imagen;
+    }
+
+    public Noticias() {
     }
 
     public int getId() {
@@ -48,5 +53,13 @@ private String datePublication;
 
     public void setDatePublication(String datePublication) {
         this.datePublication = datePublication;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }

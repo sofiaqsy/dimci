@@ -3,13 +3,15 @@
     package="com.halo.loginui2">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <permission android:name="android.permission.CAMERA"/>
 
     <application
         android:name=".service.AppController"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".vistas.Activity_Login">
@@ -27,6 +29,17 @@
         <activity android:name=".vistas.DetailsIncident" />
         <activity android:name=".vistas.RecuperarClave" />
         <activity android:name=".vistas.DetailsNoticias"></activity>
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.halo.loginui2.vistas.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"></meta-data>
+        </provider>
     </application>
+
+
 
 </manifest>
