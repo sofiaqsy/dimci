@@ -11,6 +11,9 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
+        app:titleTextColor="@color/white"
+        android:color="@color/white"
+        android:text="dfdfs"
+       />
 
 </android.support.design.widget.AppBarLayout>

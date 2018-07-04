@@ -4,11 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/grad_bg"
+
     tools:context=".vistas.DetailsNoticias">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/actionbar_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/title"
+        android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -52,14 +63,13 @@
     <TextView
         android:id="@+id/description"
         android:layout_width="match_parent"
-        android:layout_height="145dp"
-        android:padding="18dp"
+        android:layout_height="205dp"
+        android:layout_below="@+id/datePublication"
         android:layout_gravity="center"
+        android:padding="18dp"
         android:text="El miercoles el a las 4 .pm se realizara la cmapana de vacunacion de mascosras esperamos que otodos los cuidades esten presentes"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="380dp"
-        android:layout_below="@+id/datePublication"
-        />
+        tools:layout_editor_absoluteY="380dp" />
 
 
 

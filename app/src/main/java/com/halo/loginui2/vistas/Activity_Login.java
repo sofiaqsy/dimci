@@ -1,6 +1,7 @@
 package com.halo.loginui2.vistas;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,7 +9,13 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Button;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 import com.halo.loginui2.MainActivity;
+import com.halo.loginui2.Model.Ciudadano;
 import com.halo.loginui2.R;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -23,6 +30,9 @@ import android.widget.Button;
 
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -105,7 +115,11 @@ public class Activity_Login extends AppCompatActivity {
                 new Runnable() {
                     public void run() {
                         // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
+                        Gson gson = new Gson();
+                        Ciudadano ciudadano = new Ciudadano();
+                        ciudadano.setPhoneNumber(email);
+                        ciudadano.setPassword(password);
+                        onLoginSuccess(gson.toJson(ciudadano));
                         // onLoginFailed();
                         progressDialog.dismiss();
                     }
@@ -130,11 +144,42 @@ public class Activity_Login extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-    public void onLoginSuccess() {
+    public void onLoginSuccess(String gson) {
         _loginButton.setEnabled(true);
         finish();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        JSONObject json = new JSONObject();
+        try {
+            json = new JSONObject(gson);
+        } catch (JSONException e) {
+            Log.i(TAG,e.toString());
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                "https://dinci-rest.herokuapp.com/ciudadano/autenticacion",
+                json,
+                (response) -> {
+                    //Toast.makeText(context,response.toString(),Toast.LENGTH_LONG).show();
+                    //this.limpiarCampos();
+                    Gson gsonResponse = new Gson();
+                    Ciudadano ciudadano = gsonResponse.fromJson(response.toString(),Ciudadano.class);
+                    SharedPreferences.Editor editor = getSharedPreferences("usuario", MODE_PRIVATE).edit();
+                    editor.putInt("id", ciudadano.getId());
+                    editor.putString("name", ciudadano.getName());
+                    //editor.putString("cantPost", ciudadano.ge());
+                    editor.commit();
+                    Intent intent = new Intent(this, MainActivity.class);
+                    //intent.putExtra("id",ciudadano.getId());
+                    startActivity(intent);
+                    Log.i(TAG,response.toString());
+                },
+                (error) -> {
+                    Log.i(TAG,error.toString());
+                });
+        requestQueue.add(request);
+
     }
 
     public void onLoginFailed() {
@@ -149,26 +194,21 @@ public class Activity_Login extends AppCompatActivity {
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
-//        if (email.isEmpty() || password.length() == 8){//!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-//            _emailText.setError("Introdusca un usuario valido");
-//            valid = false;
-//        } else {
-//            _emailText.setError(null);
-//        }
-//
-//        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-//            _passwordText.setError("entre 4 y 10 caracteres alfanuméricos");
-//            valid = false;
-//        } else {
-//            _passwordText.setError(null);
-//        }
-        if (password.isEmpty() && email.isEmpty()) {
-
-            _passwordText.setError(null);
-        } else {
-            _passwordText.setError("poner correo y password en blanco");
+       if (email.isEmpty() ){//!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            _emailText.setError("Introdusca un usuario valido");
             valid = false;
+        } else {
+            _emailText.setError(null);
         }
+
+        if (password.isEmpty() ) {
+           _passwordText.setError("Complete el campo");
+            valid = false;
+        } else {
+            _passwordText.setError(null);
+        }
+
+
 
         return valid;
     }

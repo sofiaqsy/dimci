@@ -90,20 +90,16 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
         Picasso.get().load(mDataset.get(position).getImagen()).into(holder.foto);
 
 
-        holder.linearLayoutNoticias.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d(TAG, "onClick: clicked on: " + mDataset.get(position).getDatePublication());
-                Intent intent = new Intent(mContext, DetailsNoticias.class);
-                intent.putExtra("title", mDataset.get(position).getTitle());
-                intent.putExtra("description", mDataset.get(position).getDescription());
-                intent.putExtra("datePublication", mDataset.get(position).getDatePublication());
-                intent.putExtra("imagen", mDataset.get(position).getImagen());
+        holder.linearLayoutNoticias.setOnClickListener((view)->{
+            Log.i(TAG,"se hizo click");
+            Intent intent = new Intent(mContext, DetailsNoticias.class);
+            intent.putExtra("title", mDataset.get(position).getTitle());
+            intent.putExtra("description", mDataset.get(position).getDescription());
+            intent.putExtra("datePublication", mDataset.get(position).getDatePublication());
+            intent.putExtra("imagen", mDataset.get(position).getImagen());
 
-                mContext.startActivity(intent);
-            }
+            mContext.startActivity(intent);
         });
-
 
     }
 
